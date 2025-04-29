@@ -21,6 +21,17 @@
                     }
                     alert("The sum of all the multiples of 3 or 5 below 1000 is: "+sum);
                 }
+                function getAllTheMultipleOfTwoNumber(num1,num2,limit){
+                    multiples = []
+                    for (let i = 0; i < limit; i++) {
+                        if (i % num1 == 0 || i % num2 == 0) {
+                            multiples.push(i);
+                        }
+                    }
+                    console.log('Here are the multiples of ' + num1 + ' and ' + num2 + ' below ' + limit);
+                    console.log(multiples);
+                    return multiples;
+                }
             // Functions for exercise 3
                 let sumOfAllTheMultiple=()=>{
                     let a=document.getElementById('a').value;
@@ -33,6 +44,22 @@
                         }
                     }
                     alert("The sum of all the multiples of a or b below n is: "+sum);
+                }
+
+            // Functions for exercise 4
+                let exercise4=()=>{
+                    let a=document.getElementById('ex4a').value;
+                    let b=document.getElementById('ex4b').value;
+                    let l=document.getElementById('ex4l').value;
+                    console.log(a);
+                    console.log(b);
+                    console.log(l);
+                    let sum=0;
+                    multiples = getAllTheMultipleOfTwoNumber(a,b,l);
+                    console.log(multiples);
+                    sum = multiples.reduce((acc, curr) => acc + curr, 0);
+                    
+                    alert("The sum of all the multiples of a or b in array l is: "+sum);
                 }
         </script>
     </head>
@@ -80,7 +107,45 @@
     <input type="text" id="n" placeholder="Enter n">
     <button onclick='sumOfAllTheMultiple()'>Enter the values</button>
     <!-- ------------------------------------------------------------ -->
+                <!-- Exercise 4 -->
+    <!-- ------------------------------------------------------------ -->
     
+<h2>Exercise 4, Arrays: f4 should take 2 integer and 1 array parameters and return an integer.</h2>
+<p>Create a function f4 to return the sum of all the multiples of a or b in array l</p>
+<p>(Exercise 4.1) Create a page with a button and three input boxes, labelled a, b and l, l should be a large input</p>
+<p>Call the function f4 in the function called by onClick, and alert the user to the 
+    returned answer when they press the button.</p>
+    
+    <h4> Solution for exercise 4: </h4>
+    <input type="number" id="ex4a" placeholder="Enter a">
+    <input type="number" id="ex4b" placeholder="Enter b">
+    <input type="number" id="ex4l" placeholder="Enter l">
+    <button onclick='exercise4()'>Enter the values</button>
+    <!-- ------------------------------------------------------------ -->
+                <!-- Exercise 5 -->
+    <!-- ------------------------------------------------------------ -->
+<p>Exercise 5, Arrays: f5 should take array parameters and return an integer.</p>
+<p>Create a function f5 to return the sum of all the multiples of factors in a 
+    found in in l (a and l should be arrays of integers, a is of length 2)</p>
+<p>(Exercise 5.1) Create a page with a button and two wide input boxes, labelled a and l</p>
+<p>Call the function f5 in the function called by onClick, and alert the user to the 
+    returned answer when they press the button.</p>
+</p>
+<p>You may find the split function useful for creating arrays from the strings entered: <a href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
+    <!-- ------------------------------------------------------------ -->
+                <!-- Exercise 6 -->
+    <!-- ------------------------------------------------------------ -->
+<p>Exercise 6, Arrays: f6 should take array parameters and return an integer.</p>
+<p>Create a function f6 to return the sum of all the multiples of factors in a 
+    found in in l (a and l should be arrays of integers)</p>
+<p>(Exercise 6.1) Create a page with a button and two wide input boxes, labelled a and l</p>
+<p>Call the function f6 in the function called by onClick, and alert the user to the 
+    returned answer when they press the button.</p>
+</p>
+<p>You may find the split function useful for creating arrays from the strings entered: <a href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
+
+<input type="text" id="nums"> <button onclick="mapNums()">Press me!</button>
+
 </p>
     </body>
 </html>
