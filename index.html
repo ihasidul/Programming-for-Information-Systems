@@ -37,7 +37,7 @@
                     let a=document.getElementById('a').value;
                     let b=document.getElementById('b').value;
                     let n=document.getElementById('n').value;
-                    getAllTheMultipleOfTwoNumber(a,b,n);
+                    multiples = getAllTheMultipleOfTwoNumber(a,b,n);
                     sum = multiples.reduce((acc, curr) => acc + curr, 0);
                     alert("The sum of all the multiples of a or b below n is: "+sum);
                 }
@@ -47,12 +47,8 @@
                     let a=document.getElementById('ex4a').value;
                     let b=document.getElementById('ex4b').value;
                     let l=document.getElementById('ex4l').value;
-                    console.log(a);
-                    console.log(b);
-                    console.log(l);
                     let sum=0;
                     multiples = getAllTheMultipleOfTwoNumber(a,b,l);
-                    console.log(multiples);
                     sum = multiples.reduce((acc, curr) => acc + curr, 0);
                     
                     alert("The sum of all the multiples of a or b in array l is: "+sum);
