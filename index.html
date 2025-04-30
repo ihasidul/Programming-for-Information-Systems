@@ -33,16 +33,12 @@
                     return multiples;
                 }
             // Functions for exercise 3
-                let sumOfAllTheMultiple=()=>{
+                let ex3=()=>{
                     let a=document.getElementById('a').value;
                     let b=document.getElementById('b').value;
                     let n=document.getElementById('n').value;
-                    let sum=0;
-                    for(let i=0;i<n;i++){
-                        if(i%a==0 || i%b==0){
-                            sum+=i;
-                        }
-                    }
+                    getAllTheMultipleOfTwoNumber(a,b,n);
+                    sum = multiples.reduce((acc, curr) => acc + curr, 0);
                     alert("The sum of all the multiples of a or b below n is: "+sum);
                 }
 
@@ -105,7 +101,7 @@
     <input type="text" id="a" placeholder="Enter a">
     <input type="text" id="b" placeholder="Enter b">
     <input type="text" id="n" placeholder="Enter n">
-    <button onclick='sumOfAllTheMultiple()'>Enter the values</button>
+    <button onclick='ex3()'>Enter the values</button>
     <!-- ------------------------------------------------------------ -->
                 <!-- Exercise 4 -->
     <!-- ------------------------------------------------------------ -->
