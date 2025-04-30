@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Exercise</title>
+        <title>Exercises</title>
         <script src="index.js"></script>
         <script>
             // Functions for exercise 1
@@ -21,7 +21,7 @@
                     }
                     alert("The sum of all the multiples of 3 or 5 below 1000 is: "+sum);
                 }
-                function getAllTheMultipleOfTwoNumber(num1,num2,limit){
+                function getAnyMultiplesOfTwoNumberTillLimit(num1,num2,limit){
                     multiples = []
                     for (let i = 0; i < limit; i++) {
                         if (i % num1 == 0 || i % num2 == 0) {
@@ -32,12 +32,23 @@
                     console.log(multiples);
                     return multiples;
                 }
+                function getAnyMultiplesOfTwoNumberFromAnArray(num1,num2, checkArray){
+                    multiples = []
+                    for (let i = 0; i < checkArray.length; i++) {
+                        if (checkArray[i] % num1 == 0 || checkArray[i] % num2 == 0) {
+                            multiples.push(checkArray[i]);
+                        }
+                    }
+                    console.log('Here are the multiples of ' + num1 + ' and ' + num2 + ' in the array');
+                    console.log(multiples);
+                    return multiples;
+                }
             // Functions for exercise 3
                 let ex3=()=>{
                     let a=document.getElementById('a').value;
                     let b=document.getElementById('b').value;
                     let n=document.getElementById('n').value;
-                    multiples = getAllTheMultipleOfTwoNumber(a,b,n);
+                    multiples = getAnyMultiplesOfTwoNumberTillLimit(a,b,n);
                     sum = multiples.reduce((acc, curr) => acc + curr, 0);
                     alert("The sum of all the multiples of a or b below n is: "+sum);
                 }
@@ -46,9 +57,9 @@
                 let exercise4=()=>{
                     let a=document.getElementById('ex4a').value;
                     let b=document.getElementById('ex4b').value;
-                    let l=document.getElementById('ex4l').value;
+                    let l=document.getElementById('ex4l').value.split(',').map(Number);
                     let sum=0;
-                    multiples = getAllTheMultipleOfTwoNumber(a,b,l);
+                    multiples = getAnyMultiplesOfTwoNumberFromAnArray(a,b,l);
                     sum = multiples.reduce((acc, curr) => acc + curr, 0);
                     
                     alert("The sum of all the multiples of a or b in array l is: "+sum);
@@ -111,7 +122,9 @@
     <h4> Solution for exercise 4: </h4>
     <input type="number" id="ex4a" placeholder="Enter a">
     <input type="number" id="ex4b" placeholder="Enter b">
-    <input type="number" id="ex4l" placeholder="Enter l">
+    <p>Enter a large number of integers separated by commas:</p>
+    <p>Example: 1,2,3,4,5,6,7,8,9</p>
+    <input type="text" id="ex4l" placeholder="Enter l">
     <button onclick='exercise4()'>Enter the values</button>
     <!-- ------------------------------------------------------------ -->
                 <!-- Exercise 5 -->
