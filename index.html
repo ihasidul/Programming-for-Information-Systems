@@ -35,6 +35,12 @@
                     sum5 = f5(ex5a,ex5l);
                     alert("The sum of all the multiples of factors in a found in in l is: " + sum5);
                     break;
+                case 6:
+                    let aValues = document.getElementById('ex6a').value.split(',').map(Number);
+                    let lValues = document.getElementById('ex6l').value.split(',').map(Number);
+                    let sumOfMultiples = f6(aValues, lValues);
+                    alert("The sum of all the multiples of factors in a found in l is: " + sumOfMultiples);
+                    break;
                 default:
                     alert("Invalid exercise number");
             }
@@ -55,6 +61,18 @@
                 }
             }
             alert("The sum of all the multiples of 3 or 5 below 1000 is: " + sum);
+        }
+        function getMultiplesOfANumberFromArray(num, checkArray) {
+            
+            multiples = []
+            for (let i = 0; i < checkArray.length; i++) {
+                if (checkArray[i] % num == 0) {
+                    multiples.push(checkArray[i]);
+                }
+            }
+            console.log('Here are the multiples of ' + num + ' in the array');
+            console.log(multiples);
+            return multiples;
         }
         function getAnyMultiplesOfTwoNumberTillLimit(num1, num2, limit) {
             multiples = []
@@ -96,9 +114,20 @@
         }
         // Functions for exercise 5
         let f5 = (a, l) => {
+            console.log('l:', l);
             let sum = 0;
             multiples = getAnyMultiplesOfTwoNumberFromAnArray(a[0], a[1], l);
             sum = multiples.reduce((acc, curr) => acc + curr, 0);
+            return sum;
+        }
+        // Functions for exercise 6
+        let f6 = (a, l) => {
+            let sum = 0;
+            for (let i = 0; i < a.length; i++)
+            {
+                let multiples = getMultiplesOfANumberFromArray(a[i],l);
+                sum += multiples.reduce((acc,curr) => acc + curr,0);
+            }
             return sum;
         }
     </script>
@@ -199,10 +228,14 @@
     </p>
     <p>You may find the split function useful for creating arrays from the strings entered: <a
             href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
-
-    <input type="text" id="nums"> <button onclick="mapNums()">Press me!</button>
-
-    </p>
+    <h4> Solution for exercise 6: </h4>
+    <p> Enter any number of integers value separated by commas:</p>
+    <p>Example: 3,5,9</p>
+    <input type="text" id="ex6a" placeholder="Enter a">
+    <p>Enter a large number of integers separated by commas:</p>
+    <p>Example: 1,2,3,4,5,6,7,8,9</p>
+    <input type="text" id="ex6l" placeholder="Enter l">
+    <button onclick='handleButtonClick(6)'>Calculate Sum</button>
 </body>
 
 </html>
