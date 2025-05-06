@@ -31,9 +31,15 @@
                 case 5:
                     let ex5a = document.getElementById('ex5a').value.split(',').map(Number);
                     let ex5l = document.getElementById('ex5l').value.split(',').map(Number);
-
-                    sum5 = f5(ex5a,ex5l);
-                    alert("The sum of all the multiples of factors in a found in in l is: " + sum5);
+                    if (ex5a.length != 2) {
+                        console.log('I am here');
+                        console.log('ex5a:', ex5a);
+                        alert("Please enter exactly two integers for a.");
+                    }
+                    else{
+                        sum5 = f5(ex5a,ex5l);
+                        alert("The sum of all the multiples of factors in a found in in l is: " + sum5);
+                    }
                     break;
                 case 6:
                     let aValues = document.getElementById('ex6a').value.split(',').map(Number);
