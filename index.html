@@ -123,11 +123,14 @@
         // Functions for exercise 6
         let f6 = (a, l) => {
             let sum = 0;
+            allMultiples = []
             for (let i = 0; i < a.length; i++)
             {
                 let multiples = getMultiplesOfANumberFromArray(a[i],l);
-                sum += multiples.reduce((acc,curr) => acc + curr,0);
+                allMultiples = allMultiples.concat(multiples);
             }
+            allMultiples = [...new Set(allMultiples)]; //Taking only unique values
+            sum = allMultiples.reduce((acc, curr) => acc + curr, 0);
             return sum;
         }
     </script>
