@@ -1,156 +1,208 @@
 <html>
-    <head>
-        <title>Exercises</title>
-        <script src="index.js"></script>
-        <script>
-            // Functions for exercise 1
-                let takeInput=()=>{
-                    let i=document.getElementById('user-input').value
-                    if(i>15){
-                        alert("Baggage exceeds the allowance of 15kg")
-                    }
-                    
-                }
-            // Functions for exercise 2
-                let getMultiples=()=>{
-                    let sum=0;
-                    for(let i=0;i<1000;i++){
-                        if(i%3==0 || i%5==0){
-                            sum+=i;
-                        }
-                    }
-                    alert("The sum of all the multiples of 3 or 5 below 1000 is: "+sum);
-                }
-                function getAnyMultiplesOfTwoNumberTillLimit(num1,num2,limit){
-                    multiples = []
-                    for (let i = 0; i < limit; i++) {
-                        if (i % num1 == 0 || i % num2 == 0) {
-                            multiples.push(i);
-                        }
-                    }
-                    console.log('Here are the multiples of ' + num1 + ' and ' + num2 + ' below ' + limit);
-                    console.log(multiples);
-                    return multiples;
-                }
-                function getAnyMultiplesOfTwoNumberFromAnArray(num1,num2, checkArray){
-                    multiples = []
-                    for (let i = 0; i < checkArray.length; i++) {
-                        if (checkArray[i] % num1 == 0 || checkArray[i] % num2 == 0) {
-                            multiples.push(checkArray[i]);
-                        }
-                    }
-                    console.log('Here are the multiples of ' + num1 + ' and ' + num2 + ' in the array');
-                    console.log(multiples);
-                    return multiples;
-                }
-            // Functions for exercise 3
-                let ex3=()=>{
-                    let a=document.getElementById('a').value;
-                    let b=document.getElementById('b').value;
-                    let n=document.getElementById('n').value;
-                    multiples = getAnyMultiplesOfTwoNumberTillLimit(a,b,n);
-                    sum = multiples.reduce((acc, curr) => acc + curr, 0);
-                    alert("The sum of all the multiples of a or b below n is: "+sum);
-                }
 
-            // Functions for exercise 4
-                let exercise4=()=>{
-                    let a=document.getElementById('ex4a').value;
-                    let b=document.getElementById('ex4b').value;
-                    let l=document.getElementById('ex4l').value.split(',').map(Number);
-                    let sum=0;
-                    multiples = getAnyMultiplesOfTwoNumberFromAnArray(a,b,l);
-                    sum = multiples.reduce((acc, curr) => acc + curr, 0);
-                    
-                    alert("The sum of all the multiples of a or b in array l is: "+sum);
+<head>
+    <title>Exercises</title>
+    <script src="index.js"></script>
+    <script>
+        
+        let handleButtonClick = (exerciseNumber) => {
+            switch (exerciseNumber) {
+                case 1:
+                    takeInput();
+                    break;
+                case 2:
+                    getMultiples();
+                    break;
+                case 3:
+                    ex3();
+                    let a = document.getElementById('a').value;
+                    let b = document.getElementById('b').value;
+                    let n = document.getElementById('n').value;
+                    let sum = ex3(a, b, n);
+                    alert("The sum of all the multiples of " + a + " or " + b + " below " + n + " is: " + sum);
+                    break;
+                case 4:
+                    let ex4a = document.getElementById('ex4a').value;
+                    let ex4b = document.getElementById('ex4b').value;
+                    let ex4l = document.getElementById('ex4l').value.split(',').map(Number);
+                    let sum4 = f4(ex4a, ex4b, ex4l);
+                    alert("The sum of all the multiples of a or b in array l is: " + sum4);
+                    break;
+                case 5:
+                    let ex5a = document.getElementById('ex5a').value.split(',').map(Number);
+                    let ex5l = document.getElementById('ex5l').value.split(',').map(Number);
+
+                    sum5 = f5(ex5a,ex5l);
+                    alert("The sum of all the multiples of factors in a found in in l is: " + sum5);
+                    break;
+                default:
+                    alert("Invalid exercise number");
+            }
+        }
+        // Functions for exercise 1
+        let takeInput = () => {
+            let i = document.getElementById('user-input').value
+            if (i > 15) {
+                alert("Baggage exceeds the allowance of 15kg")
+            }
+        }
+        // Functions for exercise 2
+        let getMultiples = () => {
+            let sum = 0;
+            for (let i = 0; i < 1000; i++) {
+                if (i % 3 == 0 || i % 5 == 0) {
+                    sum += i;
                 }
-        </script>
-    </head>
-    <body>
+            }
+            alert("The sum of all the multiples of 3 or 5 below 1000 is: " + sum);
+        }
+        function getAnyMultiplesOfTwoNumberTillLimit(num1, num2, limit) {
+            multiples = []
+            for (let i = 0; i < limit; i++) {
+                if (i % num1 == 0 || i % num2 == 0) {
+                    multiples.push(i);
+                }
+            }
+            console.log('Here are the multiples of ' + num1 + ' and ' + num2 + ' below ' + limit);
+            console.log(multiples);
+            return multiples;
+        }
+        function getAnyMultiplesOfTwoNumberFromAnArray(num1, num2, checkArray) {
+            multiples = []
+            for (let i = 0; i < checkArray.length; i++) {
+                if (checkArray[i] % num1 == 0 || checkArray[i] % num2 == 0) {
+                    multiples.push(checkArray[i]);
+                }
+            }
+            console.log('Here are the multiples of ' + num1 + ' and ' + num2 + ' in the array');
+            console.log(multiples);
+            return multiples;
+        }
+        // Functions for exercise 3
+        let ex3 = (a,b,n) => {
+            multiples = getAnyMultiplesOfTwoNumberTillLimit(a, b, n);
+            sum = multiples.reduce((acc, curr) => acc + curr, 0);
+            return sum 
+        }
+
+        // Functions for exercise 4
+        let f4 = (a, b, l) => {
+            
+            let sum = 0;
+            multiples = getAnyMultiplesOfTwoNumberFromAnArray(a, b, l);
+            sum = multiples.reduce((acc, curr) => acc + curr, 0);
+            return sum;
+
+        }
+        // Functions for exercise 5
+        let f5 = (a, l) => {
+            let sum = 0;
+            multiples = getAnyMultiplesOfTwoNumberFromAnArray(a[0], a[1], l);
+            sum = multiples.reduce((acc, curr) => acc + curr, 0);
+            return sum;
+        }
+    </script>
+</head>
+
+<body>
     <!-- ------------------------------------------------------------ -->
-                    <!-- Exercise 1 -->
+    <!-- Exercise 1 -->
     <!-- ------------------------------------------------------------ -->
     <h2>Exercise 1</h2>
-    <p>Exercise 1: Create a function and button which allows a user to enter baggage weight and alerts them if the baggage exceeds the allowance of 15kg</p>
-    
+    <p>Exercise 1: Create a function and button which allows a user to enter baggage weight and alerts them if the
+        baggage exceeds the allowance of 15kg</p>
+
     <h4> Solution for exercise 1: </h4>
     <h4>Enter baggage weight:</h4>
     <input type="text" id="user-input">
-    <button onclick='takeInput()'>Press Me</button>
+    <button onclick='handleButtonClick(1)'>Press Me</button>
     <!-- ------------------------------------------------------------ -->
-                    <!-- Exercise 2 -->
+    <!-- Exercise 2 -->
     <!-- ------------------------------------------------------------ -->
-    <h2>Exercise 2:</h2>
+    <h2>Exercise 2</h2>
     <p>Create a page with a button</p>
     <p>When the user clicks, </p>
     <p>
-        <p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
-            The sum of these multiples is 23.</p>
-        <p>Find the sum of all the multiples of 3 or 5 below 1000 and alert the user to the correct answer.</p>
-</p>
+    <p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
+        The sum of these multiples is 23.</p>
+    <p>Find the sum of all the multiples of 3 or 5 below 1000 and alert the user to the correct answer.</p>
+    </p>
 
     <h4> Solution for exercise 2: </h4>
     <h4>Press the button to get the answer on alert</h4>
-    <button onclick="getMultiples()">Press me!</button>
+    <button onclick="handleButtonClick(2)">Press me!</button>
 
     <!-- ------------------------------------------------------------ -->
-                    <!-- Exercise 3 -->
+    <!-- Exercise 3 -->
     <!-- ------------------------------------------------------------ -->
 
     <h2>Exercise 3</h2>
     <p>Create a page with a button and three input boxes, labelled a, b and n</p>
     <p>When the user clicks, </p>
     <p>
-        <p>Create a function to return the sum of all the multiples of a or b below n</p>
-        <p>Call the function and alert the user to the correct answer when they press the button.</p>
+    <p>Create a function to return the sum of all the multiples of a or b below n</p>
+    <p>Call the function and alert the user to the correct answer when they press the button.</p>
 
     <h4> Solution for exercise 3: </h4>
     <input type="text" id="a" placeholder="Enter a">
     <input type="text" id="b" placeholder="Enter b">
     <input type="text" id="n" placeholder="Enter n">
-    <button onclick='ex3()'>Enter the values</button>
+    <button onclick='handleButtonClick(3)' id="ex3btn">Enter the values</button>
     <!-- ------------------------------------------------------------ -->
-                <!-- Exercise 4 -->
+    <!-- Exercise 4 -->
     <!-- ------------------------------------------------------------ -->
-    
-<h2>Exercise 4, Arrays: f4 should take 2 integer and 1 array parameters and return an integer.</h2>
-<p>Create a function f4 to return the sum of all the multiples of a or b in array l</p>
-<p>(Exercise 4.1) Create a page with a button and three input boxes, labelled a, b and l, l should be a large input</p>
-<p>Call the function f4 in the function called by onClick, and alert the user to the 
-    returned answer when they press the button.</p>
-    
+
+    <h2>Exercise 4, Arrays: f4 should take 2 integer and 1 array parameters and return an integer.</h2>
+    <p>Create a function f4 to return the sum of all the multiples of a or b in array l</p>
+    <p>(Exercise 4.1) Create a page with a button and three input boxes, labelled a, b and l, l should be a large input
+    </p>
+    <p>Call the function f4 in the function called by onClick, and alert the user to the
+        returned answer when they press the button.</p>
+
     <h4> Solution for exercise 4: </h4>
     <input type="number" id="ex4a" placeholder="Enter a">
     <input type="number" id="ex4b" placeholder="Enter b">
     <p>Enter a large number of integers separated by commas:</p>
     <p>Example: 1,2,3,4,5,6,7,8,9</p>
     <input type="text" id="ex4l" placeholder="Enter l">
-    <button onclick='exercise4()'>Enter the values</button>
+    <button onclick='handleButtonClick(4)'>Enter the values</button>
     <!-- ------------------------------------------------------------ -->
-                <!-- Exercise 5 -->
+    <!-- Exercise 5 -->
     <!-- ------------------------------------------------------------ -->
-<p>Exercise 5, Arrays: f5 should take array parameters and return an integer.</p>
-<p>Create a function f5 to return the sum of all the multiples of factors in a 
-    found in in l (a and l should be arrays of integers, a is of length 2)</p>
-<p>(Exercise 5.1) Create a page with a button and two wide input boxes, labelled a and l</p>
-<p>Call the function f5 in the function called by onClick, and alert the user to the 
-    returned answer when they press the button.</p>
-</p>
-<p>You may find the split function useful for creating arrays from the strings entered: <a href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
-    <!-- ------------------------------------------------------------ -->
-                <!-- Exercise 6 -->
-    <!-- ------------------------------------------------------------ -->
-<p>Exercise 6, Arrays: f6 should take array parameters and return an integer.</p>
-<p>Create a function f6 to return the sum of all the multiples of factors in a 
-    found in in l (a and l should be arrays of integers)</p>
-<p>(Exercise 6.1) Create a page with a button and two wide input boxes, labelled a and l</p>
-<p>Call the function f6 in the function called by onClick, and alert the user to the 
-    returned answer when they press the button.</p>
-</p>
-<p>You may find the split function useful for creating arrays from the strings entered: <a href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
+    <h2>Exercise 5, Arrays: f5 should take array parameters and return an integer.</h2>
+    <p>Create a function f5 to return the sum of all the multiples of factors in a
+        found in in l (a and l should be arrays of integers, a is of length 2)</p>
+    <p>(Exercise 5.1) Create a page with a button and two wide input boxes, labelled a and l</p>
+    <p>Call the function f5 in the function called by onClick, and alert the user to the
+        returned answer when they press the button.</p>
+    </p>
+    <p>You may find the split function useful for creating arrays from the strings entered: <a
+            href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
 
-<input type="text" id="nums"> <button onclick="mapNums()">Press me!</button>
+    <h4> Solution for exercise 5: </h4>
+    <p> Enter two integers value separated by commas:</p>
+    <p>Example: 3,5</p>
+    <input type="text" id="ex5a" placeholder="Enter a">
+    <p>Enter a large number of integers separated by commas:</p>
+    <p>Example: 1,2,3,4,5,6,7,8,9</p>
+    <input type="text" id="ex5l" placeholder="Enter l">
+    <button onclick='handleButtonClick(5)'>Enter the values</button>
+    <!-- ------------------------------------------------------------ -->
+    <!-- Exercise 6 -->
+    <!-- ------------------------------------------------------------ -->
+    <h2>Exercise 6, Arrays: f6 should take array parameters and return an integer.</h2>
+    <p>Create a function f6 to return the sum of all the multiples of factors in a
+        found in in l (a and l should be arrays of integers)</p>
+    <p>(Exercise 6.1) Create a page with a button and two wide input boxes, labelled a and l</p>
+    <p>Call the function f6 in the function called by onClick, and alert the user to the
+        returned answer when they press the button.</p>
+    </p>
+    <p>You may find the split function useful for creating arrays from the strings entered: <a
+            href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
 
-</p>
-    </body>
+    <input type="text" id="nums"> <button onclick="mapNums()">Press me!</button>
+
+    </p>
+</body>
+
 </html>
