@@ -47,6 +47,33 @@
                     let sumOfMultiples = f6(aValues, lValues);
                     alert("The sum of all the multiples of factors in a found in l is: " + sumOfMultiples);
                     break;
+                case 7:
+                    let basket =  {
+                        egg: 3,
+                        chicken: 2
+                    }
+                    let prices  = {
+                        egg: 10,
+                        // chicken:10,
+                    }
+                    hasIssue = false;
+                    // check if all the keys on basket exists on the prices object 
+                    for (let product in basket) {
+                        if (!prices.hasOwnProperty(product)) {
+                            alert("Product " + product + " not found in prices.");
+                            hasIssue = true;
+                            break
+                        }
+                    }
+                    if (hasIssue) {
+                        break
+                    }
+                    else{
+                        totalBasketPrice = f7(basket,prices)
+                        alert("The total price of the basket is " + totalBasketPrice)
+                    }
+                    
+                    break
                 default:
                     alert("Invalid exercise number");
             }
@@ -138,6 +165,19 @@
             allMultiples = [...new Set(allMultiples)]; //Taking only unique values
             sum = allMultiples.reduce((acc, curr) => acc + curr, 0);
             return sum;
+        }
+        let f7 = (basket,prices) => {
+            let totalCost = 0;
+            for (let product in basket) {
+                console.log('HELLO ' + product )
+                if (!prices.hasOwnProperty(product)) {
+                    alert("Product " + product + " not found in prices.");
+                    return;
+                }
+                totalCost += basket[product] * prices[product];
+                // totalCost = totalCost + (basket[product] * prices[product]);
+            }
+            return totalCost;
         }
     </script>
 </head>
@@ -245,6 +285,23 @@
     <p>Example: 1,2,3,4,5,6,7,8,9</p>
     <input type="text" id="ex6l" placeholder="Enter l">
     <button onclick='handleButtonClick(6)'>Calculate Sum</button>
+    <!-- ------------------------------------------------------------ -->
+    <!-- Exercise 7 -->
+    <!-- ------------------------------------------------------------ -->
+
+    <h2>Exercise 7, Objects as dictionaries/hashtables:</h2>
+    <p>Create a function, f7, that takes two parameters, basket and prices</p>
+    <p>f7 should compute the cost of the basket given the prices supplied.</p>
+    <p>basket should be an object holding product:quantity (string:int) pairs</p>
+    <p>prices should be an object holding product:price (string:float) pairs</p>
+
+    <p>==7.1==</p>
+    <p>Create a testing page for the function f7</p>
+    
+    <h4> Solution for exercise 7: </h4>
+    <!-- Create a table like input which will take a product name, quantity and price of the products. Users can provide as many as product they want but the products should  be unique -->
+    <!-- <p>Enter the product name, quantity in the basket and the product price:</p> -->
+    <button onclick='handleButtonClick(7)'>Give answer of 7</button>
 </body>
 
 </html>
