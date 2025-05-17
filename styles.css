@@ -1,0 +1,16 @@
+#productsDisplay {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#productsDisplay,
+#productsDisplay th,
+#productsDisplay td {
+  border: 1px solid black;
+}
+
+#productsDisplay th,
+#productsDisplay td {
+  padding: 6px;
+  text-align: left;
+}
