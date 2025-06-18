@@ -9,6 +9,9 @@ def get_multiples(multiples: list, limit: int) -> list:
             pass
     return multiples_lst
 
+def get_sum_of_multiples(multiples: list, limit: int) -> int:
+    return sum(get_multiples(multiples,limit))
+
 def ex1():
     """
     Exercise 1:
@@ -27,8 +30,7 @@ def ex2():
     Find the sum of all the multiples of 3 or 5 below 1000 and alert the user to the correct answer.
     """
     multiples_of = [3,5]
-    all_multiples = get_multiples(multiples = multiples_of, limit = 1000)
-    sum_of_multiples = sum(all_multiples)
+    sum_of_multiples = get_sum_of_multiples(multiples = multiples_of, limit = 1000)
     print(f"Sum of all the multiples of 3 or 5 below 1000 is {sum_of_multiples}")
     return True
 
@@ -41,25 +43,37 @@ def ex3():
 
     Call the function and alert the user to the correct answer when they press the button.
     """
-    
+    try:
+        a = int(input("Please provide an integer number for input a: "))
+        b = int(input("Please provide an integer number for input b: "))
+        n = int(input("Please provide an integer number for the range n: "))
+        
+        sum_of_multiples = get_sum_of_multiples(multiples = [a,b], limit = n)
+        print(f"Sum of all the multiples of 3 or 5 below 1000 is {sum_of_multiples}")
+        return True
+    except Exception as e:
+        print(f"Got an error {e}")
+
 
 def main():
-    run_problem = int(input("Provide the problem number you want to run:"))
-    if run_problem == 1:
-        title = f"{'='*TITLE_BARS} \n Exercise {run_problem} \n{'='*TITLE_BARS}"
-        print(title)
-        ex1()
-    elif run_problem == 2:
-        title = f"{'='*TITLE_BARS} \n Exercise {run_problem} \n{'='*TITLE_BARS}"
-        print(title)
-        ex2()
-    elif run_problem == 3:
-        title = f"{'='*TITLE_BARS} \n Exercise {run_problem} \n{'='*TITLE_BARS}"
-        print(title)
-        ex3()
-    else:
-        print("Please provide a valid exercise numb er")
-
+    try:
+        run_problem = int(input("Provide the problem number you want to run:"))
+        if run_problem == 1:
+            title = f"{'='*TITLE_BARS} \n Exercise {run_problem} \n{'='*TITLE_BARS}"
+            print(title)
+            ex1()
+        elif run_problem == 2:
+            title = f"{'='*TITLE_BARS} \n Exercise {run_problem} \n{'='*TITLE_BARS}"
+            print(title)
+            ex2()
+        elif run_problem == 3:
+            title = f"{'='*TITLE_BARS} \n Exercise {run_problem} \n{'='*TITLE_BARS}"
+            print(title)
+            ex3()
+        else:
+            print("Please provide a valid exercise numb er")
+    except Exception as e:
+        print(f"An exception was raised. ERROR: {e}")
 
 if __name__ == "__main__":
     main()
