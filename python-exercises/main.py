@@ -27,9 +27,7 @@ def ex2():
     Find the sum of all the multiples of 3 or 5 below 1000 and alert the user to the correct answer.
     """
     multiples_of = [3,5]
-    # all_multiples = get_multiples(multiples = multiples_of, limit = 1000)
-    all_multiples = get_multiples(multiples = multiples_of, limit = 10)
-    print(all_multiples)
+    all_multiples = get_multiples(multiples = multiples_of, limit = 1000)
     sum_of_multiples = sum(all_multiples)
     print(f"Sum of all the multiples of 3 or 5 below 1000 is {sum_of_multiples}")
     return True
