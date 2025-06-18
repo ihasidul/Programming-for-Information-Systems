@@ -3,15 +3,10 @@ TITLE_BARS = 50
 def get_multiples(multiples: list, limit: int) -> list:
     multiples_lst = []
     for number in range(1,limit):
-        print( "TESTING")
-        print(any(number % m == 0 for m in multiples))
-        print("END TESTING")
         if any(number % m == 0 for m in multiples):
-            print(f"ANY {number}")
             multiples_lst.append(number)
         else:
-            print(f"did not match with {number}")
-
+            pass
     return multiples_lst
 
 def ex1():
@@ -48,7 +43,7 @@ def ex3():
 
     Call the function and alert the user to the correct answer when they press the button.
     """
-    pass
+    
 
 def main():
     run_problem = int(input("Provide the problem number you want to run:"))
